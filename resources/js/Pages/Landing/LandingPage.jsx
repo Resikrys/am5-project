@@ -13,7 +13,7 @@ const LandingPage = () => {
         <div className="LandingPage">
             <Header />
             <Cabecera />
-            {/* <AboutMe /> */}
+            <AboutMe />
             {/* <Servicios /> */}
             {/*<Media />*/}
             {/* <Contacto /> */}
