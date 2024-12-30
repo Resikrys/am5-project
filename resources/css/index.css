@@ -101,7 +101,3 @@ h1 {
   ); /* Degradado para mostrar solo el primer y último 25% */
   z-index: -1; /* Asegúrate de que quede detrás del texto */
 }
-
-/*
-Colores por defecto bootstrap-react: light (gris clar) / secondary (gris fosc) / dark (negre) / warning (groc fort) -> bg="color"
-*/
