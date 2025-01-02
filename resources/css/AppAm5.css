@@ -728,5 +728,7 @@
   }
 }
 
-/* SOLUCIONES LEGALES */
-
+/* TEMPLATE (GRID CARDS) SOLUCIONES LEGALES */
+.templateGrid {
+  gap: 150px;
+}
