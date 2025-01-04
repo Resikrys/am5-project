@@ -32,7 +32,11 @@ function Cabecera() {
                 {/* <div className='cabecera-hr'></div> */}
                 
             </section>
+<<<<<<< HEAD
             <div className='custom-hr rounded mx-auto'></div>
+=======
+            <div className='custom-hr-cabecera rounded'></div>
+>>>>>>> resikrys
         </>
     );
 }

@@ -30,6 +30,7 @@
   max-width: 130px;
   height: auto;
 }
+<<<<<<< HEAD
 
 .navbar {
   padding: 0.5rem 5rem 0.5rem 3rem !important;
@@ -42,6 +43,8 @@
 .custom-underline-color .nav-link {
   font-size: 1.3rem;
 }
+=======
+>>>>>>> resikrys
 .header-nav-link {
   font-size: 1.3rem;
 }
@@ -51,6 +54,21 @@
       font-size: clamp(0.9rem, 1.5vw, 1.8rem);
   }
 }
+@media (max-width: 991px) {
+  .nav-link.active::after {
+    width: 100%;
+    border-bottom: 0.2rem solid var(--primary-color);
+  }
+}
+
+/* .navbar {
+  padding: 0.5rem 5rem 0.5rem 3rem !important;
+}
+
+.custom-underline-color .nav-link {
+  font-size: 1.3rem;
+} */
+
 
 /* #root .App nav div .custom-underline-color .nav-link.active {
   border-bottom-color: transparent;
@@ -84,12 +102,7 @@
   transition: all 0.3s ease;
 } */
 
-@media (max-width: 991px) {
-  .nav-link.active::after {
-    width: 100%;
-    border-bottom: 0.2rem solid var(--primary-color);
-  }
-}
+
 
 /* #root .App nav div .custom-underline-color .nav-link:hover {
   border-bottom-color: transparent !important;
@@ -175,6 +188,16 @@
 .offset-md-7-5 {
   margin-left: 62.5%;
 }
+.custom-hr-cabecera {
+  width: 50%;
+  margin-bottom: 1.5rem;
+  height: 5px;
+  color: var(--light-grey);   /* old IE */
+  background-color: var(--light-grey);   /* Modern Browsers */
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
 
 /* Bottom Border (último 25%) */
 .box-cabecera::after {
@@ -199,7 +222,7 @@
 
 /* ABOUT ME */
 
-.custom-card {
+/* .custom-card {
   border: hidden !important;
 }
 
@@ -208,7 +231,7 @@
   text-decoration-color: var(--primary-color);
   text-decoration-thickness: 0.2rem;
   text-decoration-skip-ink: none;
-}
+} */
 
 /*Botón de AboutMe*/
 .accordion-button {
@@ -341,6 +364,7 @@
   background-color: var(--light-grey);   /* Modern Browsers */
   left: 0;
   right: 0;
+  margin-top: 1rem;
 }
 
 /* SERVICIOS */
@@ -748,4 +772,9 @@
       0 0 5px #BABABA, 
       0 0 10px #FFFF29;
   }
+}
+
+/* TEMPLATE (GRID CARDS) SOLUCIONES LEGALES */
+.templateGrid {
+  gap: 150px;
 }
