@@ -3,7 +3,7 @@
 //Demo llibreria -> https://react-flip-card-demo.surge.sh/
 import { useState } from 'react';
 import FlipCard from 'reactjs-flip-card';
-import Header from './Header';
+import Header from '../Landing/Header';
 import cabeceraSoluciones from '../../../../public/images/cabeceraSoluciones.webp';
 import logo from '../../../../public/am5-logo.png';
 
