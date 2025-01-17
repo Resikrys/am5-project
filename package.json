@@ -26,8 +26,10 @@
         "bootstrap": "^5.3.3",
         "bootstrap-icons": "^1.11.3",
         "react-bootstrap": "^2.10.6",
+        "react-hot-toast": "^2.5.1",
         "react-lazy-load": "^4.0.1",
         "react-router-dom": "^7.0.2",
+        "react-scroll": "^1.9.0",
         "reactjs-flip-card": "^2.0.3"
     }
 }

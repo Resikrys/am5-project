@@ -10,6 +10,8 @@ use App\Http\Requests\UpdateBlogRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class BlogController extends Controller
 {
@@ -140,5 +142,39 @@ class BlogController extends Controller
 
         return to_route('blogs.index')
             ->with('success', "Blog \"$title\" fue eliminado");
+    }
+
+    /**
+     * Get published blogs for the public frontend
+     */
+    public function getPublishedBlogs(Request $request)
+    {        
+        $query = Blog::query()
+            ->where('status', 'published')
+            ->orderBy('created_at', 'desc');
+
+        $blogs = $query->paginate(12);
+
+        return Inertia::render('Blog/Published', [
+            'blogs' => BlogResource::collection($blogs)
+        ]);
+    }
+
+    /**
+     * Get a single published blog
+     */
+    public function getPublishedBlog(Blog $blog)
+    {
+        if ($blog->status !== 'published') {
+            abort(404);
+        }
+
+        if (request()->wantsJson()) {
+            return new BlogResource($blog);
+        }
+
+        return inertia('Blog/PublishedShow', [
+            'blog' => new BlogResource($blog)
+        ]);
     }
 }

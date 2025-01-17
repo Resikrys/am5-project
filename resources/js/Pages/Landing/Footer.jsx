@@ -6,10 +6,10 @@ function Footer() {
   return (
     <footer id="footer" className="bg-gray-100 py-6">
       <div className="container mx-auto px-4">
-        <div className="flex flex-wrap text-center md:text-left">
+        <div className="flex flex-wrap justify-between gap-4 text-center md:text-left">
 
           {/* Columna 1: QR */}
-          <div className="w-full md:w-1/4 flex justify-center items-center mb-6 md:mb-0">
+          <div className="hidden md:flex w-full md:w-1/5 flex justify-center items-center mb-6 md:mb-0">
             <img 
               src={logo} 
               alt="QR que conduce a la página de inicio de AM5" 
@@ -18,8 +18,8 @@ function Footer() {
           </div>
 
           {/* Columna 2: Contactos */}
-          <div className="w-full md:w-1/4 mb-6 md:mb-0">
-            <h5 className="text-lg font-bold mb-4">Contacto</h5>
+          <div className="w-full md:w-1/3 mb-6 md:mb-0">
+            <h5 className="text-lg font-bold mb-4 text-left">Contacto</h5>
             <ul className="space-y-2">
               <li className="flex items-start">
                 <i className="bi bi-geo text-[#FFFF29] mr-2 pulse-icon"></i>
@@ -37,8 +37,8 @@ function Footer() {
           </div>
 
           {/* Columna 3: Redes Sociales */}
-          <div className="w-full md:w-1/4 mb-6 md:mb-0">
-            <h5 className="text-lg font-bold mb-4">Redes Sociales</h5>
+          <div className="w-full md:w-1/3 mb-6 md:mb-0">
+            <h5 className="text-lg font-bold mb-4 text-left">Redes Sociales</h5>
             <div className="flex flex-wrap justify-center md:justify-start">
               <ul className="w-1/2 space-y-2">
                 <li>
@@ -53,7 +53,7 @@ function Footer() {
                 </li>
                 <li>
                   <a 
-                    href="https://instagram.com" 
+                    href="https://instagram.com/andresmadariaga_" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="flex items-center text-gray-600 hover:underline decoration-primary"
@@ -75,7 +75,7 @@ function Footer() {
               <ul className="w-1/2 space-y-2">
                 <li>
                   <a 
-                    href="https://linkedin.com" 
+                    href="https://www.linkedin.com/in/andrés-madariaga" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="flex items-center text-gray-600 hover:underline decoration-primary"
@@ -95,7 +95,7 @@ function Footer() {
                 </li>
                 <li>
                   <a 
-                    href="https://tiktok.com" 
+                    href="https://tiktok.com/@andresmadariaga_" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="flex items-center text-gray-600 hover:underline decoration-primary"
@@ -108,7 +108,7 @@ function Footer() {
           </div>
 
           {/* Columna 4: Logo */}
-          <div className="w-full md:w-1/4 flex justify-center items-center">
+          <div className="flex md:hidden w-full md:w-1/4 flex justify-center items-center">
             <img 
               src={logo} 
               alt="Imagen del logo de la start-up AM5 con su característico toque de color amarillo" 
@@ -122,71 +122,3 @@ function Footer() {
 }
 
 export default Footer;
-
-//Footer made with bootstrap
-// import logo from '../../../../public/am5-logo.png';
-// // import qr from '../assets/am5-qr.png'; //Pedir qr
-
-// function Footer() {
-//   // New trial 
-//   return (
-//     <footer id='footer' className="footer mb-3"> {/* Cambiar mb-3 general por mb-individual en cada div?? -> mejora version mobil */}
-//       <div className="container">
-//         {/* <div className="custom-border-top mx-auto"></div> */}
-//         <div className="row text-center text-md-start">
-//           {/* Columna 1: QR */}
-//           <div className="col-md-3 d-flex justify-content-center align-items-center mb-3">
-//             <img src={logo} alt="QR que conduce a la página de inicio de AM5" className="img-fluid" style={{ maxWidth: "150px" }} />
-//           </div>
-
-//           {/* Columna 2: Contactos */}
-//           <div className="col-md-3 mb-3">
-//             <h5>Contacto</h5>
-//             <ul className="list-unstyled">
-//               <li className="mb-2">
-//                 <i className="bi bi-geo pulse-icon"></i>
-//                 Antonio Bellet 193, Oficina 1210, Providencia, RM
-//               </li>
-//               <li className="mb-2">
-//                 <i className="bi bi-telephone pulse-icon"></i>
-//                 +569 6344 1988
-//               </li>
-//               <li className="mb-2">
-//                 <i className="bi bi-envelope-paper pulse-icon"></i>
-//                 contacto@claimy.cl
-//               </li>
-//             </ul>
-//           </div>
-
-//           {/* Columna 3: Redes Sociales */}
-//           <div className="col-md-3 mb-3">
-//             <h5>Redes Sociales</h5>
-//             <div className="row">
-//               <div className="col">
-//                 <ul className="list-unstyled">
-//                   <li className='mb-2'><i className="bi bi-spotify pulse-icon"></i><a href="https://spotify.com" target="_blank" rel="noopener noreferrer" className="text-muted">Spotify</a></li> {/* Prueba pulse animation -> pulse-icon */}
-//                   <li className='mb-2'><i className="bi bi-instagram pulse-icon"></i><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-muted">Instagram</a></li>
-//                   <li><i className="bi bi-facebook pulse-icon"></i><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-muted">Facebook</a></li>
-//                 </ul>
-//               </div>
-//               <div className="col">
-//                 <ul className="list-unstyled">
-//                   <li className='mb-2'><i className="bi bi-linkedin pulse-icon"></i><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted">LinkedIn</a></li>
-//                   <li className='mb-2'><i className="bi bi-youtube pulse-icon"></i><a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-muted">YouTube</a></li>
-//                   <li><i className="bi bi-tiktok pulse-icon"></i><a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-muted">TikTok</a></li>
-//                 </ul>
-//               </div>
-//             </div>
-//           </div>
-
-//           {/* Columna 4: Logo */}
-//           <div className="col-md-3 d-flex justify-content-center align-items-center mb-3">
-//             <img src={logo} alt="Imagen del logo de la start-up AM5 con su característico toque de color amarillo" className="img-fluid" style={{ maxWidth: "100px" }} />
-//           </div>
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// }
-
-// export default Footer;

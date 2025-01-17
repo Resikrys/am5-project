@@ -1,121 +1,124 @@
-//Menú sin funcionalidad pantallas pequeñas
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, scroller } from 'react-scroll';
 import logo from '../../../../public/am5-logo.png';
 
 function Header() {
-    return (
-        <header className="sticky top-0 bg-white shadow-md z-50">
-            <div className="max-w-screen-xl mx-auto px-4 py-4">
-                <div className="flex justify-between items-center logo">
-                    <a href="/" className="flex items-center space-x-2">
-                        <img src={logo} alt="Imagen del logo de la start-up AM5 con su característico toque de color amarillo" className="h-12" />
-                    </a>
-                    <button className="lg:hidden text-gray-600" aria-label="Toggle menu">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                    <nav className="hidden lg:flex space-x-6 font-normal">
-                        <a href="#inicio" className="relative text-lg text-gray-700 hover: after:content-[''] after:block after:w-0 after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out hover:after:w-full header-nav-link">Inicio</a>
-                        <a href="#about" className="relative text-lg text-gray-700 hover: after:content-[''] after:block after:w-0 after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out hover:after:w-full header-nav-link">Sobre Mí</a>
-                        <a href="#services" className="relative text-lg text-gray-700 hover: after:content-[''] after:block after:w-0 after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out hover:after:w-full header-nav-link">Servicios</a>
-                        <a href="#media" className="relative text-lg text-gray-700 hover: after:content-[''] after:block after:w-0 after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out hover:after:w-full header-nav-link">Media</a>
-                        <a href="#contact" className="relative text-lg text-gray-700 hover: after:content-[''] after:block after:w-0 after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out hover:after:w-full header-nav-link">Contacto</a>
-                    </nav>
-                </div>
-            </div>
-        </header>
-    );
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+  const [navbarHeight, setNavbarHeight] = useState(0);
+  const navbarRef = useRef(null);
+
+  const navLinks = [
+    { href: 'inicio', label: 'Inicio' },
+    { href: 'about', label: 'Sobre Mí' },
+    { href: 'services', label: 'Servicios' },
+    { href: 'media', label: 'Media' },
+    // { href: 'contact', label: 'Contacto' },
+  ];
+
+  useEffect(() => {
+    if (navbarRef.current) {
+      setNavbarHeight(navbarRef.current.offsetHeight);
+    }
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleSetActive = (to) => {
+    setActiveSection(to);
+  };
+
+  const handleLinkClick = (to) => {
+    scroller.scrollTo(to, {
+      duration: 500,
+      smooth: true,
+      offset: -navbarHeight,
+    });
+    setIsMenuOpen(false);
+  };
+
+  return (
+    <header ref={navbarRef} className="sticky top-0 bg-white shadow-md z-50">
+      <div className="max-w-screen-xl lg:me-60 sm:me-20 me-16 ps-12 py-4">
+        <div className="flex justify-between items-center logo">
+          <a href="/" className="flex items-center space-x-2">
+            <img
+              src={logo}
+              alt="Imagen del logo de la start-up AM5 con su característico toque de color amarillo"
+              className="h-12"
+            />
+          </a>
+          <button
+            className="lg:hidden text-gray-600"
+            aria-label="Toggle menu"
+            onClick={toggleMenu}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+          <nav className="hidden lg:flex space-x-10 font-normal">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                smooth={true}
+                duration={500}
+                offset={-navbarHeight}
+                className={`relative text-lg text-gray-700 cursor-pointer ${
+                  activeSection === link.href
+                    ? 'after:content-[""] after:block after:w-full after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out header-nav-link'
+                    : 'hover:after:content-[""] after:block after:w-0 after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out hover:after:w-full header-nav-link'
+                }`}
+                onSetActive={handleSetActive}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </div>
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-40 flex">
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
+            onClick={toggleMenu}
+          ></div>
+          <div className="ml-auto w-2/3 max-w-xs bg-white shadow-lg p-4 transform transition-transform duration-300 ease-in-out">
+            <nav className="space-y-4 mt-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={`#${link.href}`}
+                  className={`block relative text-lg text-gray-700 after:content-[''] after:block after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out ${
+                    activeSection === link.href
+                      ? 'after:w-full'
+                      : 'after:w-0 hover:after:w-full'
+                  } px-4 py-2`}
+                  onClick={() => handleLinkClick(link.href)}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </div>
+      )}
+    </header>
+  );
 }
 
 export default Header;
-
-//Prueba Menú-toggle pantallas pequeñas con lógica
-// import { useState } from 'react';
-// import logo from '../../../../public/am5-logo.png';
-
-// function Header() {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-//   const toggleMenu = () => {
-//     setIsMenuOpen((prev) => !prev);
-//   };
-
-//   return (
-//     <header className="sticky top-0 bg-white shadow-md z-50">
-//       <div className="max-w-screen-xl mx-auto px-4 py-4">
-//         <div className="flex justify-between items-center logo">
-//           {/* Logo */}
-//           <a href="/" className="flex items-center space-x-2">
-//             <img
-//               src={logo}
-//               alt="Imagen del logo de la start-up AM5 con su característico toque de color amarillo"
-//               className="h-12"
-//             />
-//           </a>
-
-//           {/* Botón de menú (toggle) */}
-//           <button
-//             onClick={toggleMenu}
-//             className="lg:hidden text-gray-600"
-//             aria-label="Toggle menu"
-//           >
-//             <svg
-//               xmlns="http://www.w3.org/2000/svg"
-//               fill="none"
-//               viewBox="0 0 24 24"
-//               stroke="currentColor"
-//               className="w-6 h-6"
-//             >
-//               <path
-//                 strokeLinecap="round"
-//                 strokeLinejoin="round"
-//                 strokeWidth="2"
-//                 d="M4 6h16M4 12h16M4 18h16"
-//               ></path>
-//             </svg>
-//           </button>
-
-//           {/* Navegación */}
-//           <nav
-//             className={`${
-//               isMenuOpen ? 'block' : 'hidden'
-//             } lg:flex space-x-6 absolute lg:static top-16 left-0 w-full lg:w-auto bg-white shadow-lg lg:shadow-none font-sans font-normal`}
-//           >
-//             <a
-//               href="#inicio"
-//               className="block lg:inline-block relative text-lg text-gray-700 hover:after:content-[''] after:block after:w-0 after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out hover:after:w-full px-4 py-2 lg:py-0"
-//             >
-//               Inicio
-//             </a>
-//             <a
-//               href="#about"
-//               className="block lg:inline-block relative text-lg text-gray-700 hover:after:content-[''] after:block after:w-0 after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out hover:after:w-full px-4 py-2 lg:py-0"
-//             >
-//               Sobre Mí
-//             </a>
-//             <a
-//               href="#services"
-//               className="block lg:inline-block relative text-lg text-gray-700 hover:after:content-[''] after:block after:w-0 after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out hover:after:w-full px-4 py-2 lg:py-0"
-//             >
-//               Servicios
-//             </a>
-//             <a
-//               href="#media"
-//               className="block lg:inline-block relative text-lg text-gray-700 hover:after:content-[''] after:block after:w-0 after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out hover:after:w-full px-4 py-2 lg:py-0"
-//             >
-//               Media
-//             </a>
-//             <a
-//               href="#contact"
-//               className="block lg:inline-block relative text-lg text-gray-700 hover:after:content-[''] after:block after:w-0 after:h-[3px] after:bg-primary after:transition-all after:duration-300 after:ease-in-out hover:after:w-full px-4 py-2 lg:py-0"
-//             >
-//               Contacto
-//             </a>
-//           </nav>
-//         </div>
-//       </div>
-//     </header>
-//   );
-// }
-
-// export default Header;
