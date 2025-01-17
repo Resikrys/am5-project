@@ -27,10 +27,9 @@
 }
 
 .logo img {
-  max-width: 130px;
+  max-width: 90px;
   height: auto;
 }
-<<<<<<< HEAD
 
 .navbar {
   padding: 0.5rem 5rem 0.5rem 3rem !important;
@@ -43,10 +42,8 @@
 .custom-underline-color .nav-link {
   font-size: 1.3rem;
 }
-=======
->>>>>>> resikrys
 .header-nav-link {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 @media (min-width: 1200px) {
@@ -54,21 +51,6 @@
       font-size: clamp(0.9rem, 1.5vw, 1.8rem);
   }
 }
-@media (max-width: 991px) {
-  .nav-link.active::after {
-    width: 100%;
-    border-bottom: 0.2rem solid var(--primary-color);
-  }
-}
-
-/* .navbar {
-  padding: 0.5rem 5rem 0.5rem 3rem !important;
-}
-
-.custom-underline-color .nav-link {
-  font-size: 1.3rem;
-} */
-
 
 /* #root .App nav div .custom-underline-color .nav-link.active {
   border-bottom-color: transparent;
@@ -102,7 +84,12 @@
   transition: all 0.3s ease;
 } */
 
-
+@media (max-width: 991px) {
+  .nav-link.active::after {
+    width: 100%;
+    border-bottom: 0.2rem solid var(--primary-color);
+  }
+}
 
 /* #root .App nav div .custom-underline-color .nav-link:hover {
   border-bottom-color: transparent !important;
@@ -122,16 +109,8 @@
   height: 100vh;
   background-size: cover;
   background-position: center;
-
-  background-image: url('images/imagenhome.webp');
   background-size: cover;
   background-position: center;
-}
-
-@media (max-width: 768px) {
-  .cabecera {
-      background-image: url('images/imagenhome-small.webp');
-  }
 }
 
 .cabecera .content-wrapper {
@@ -140,10 +119,10 @@
 }
 
 .cabecera .box-cabecera {
-  position: relative;  
+  position: relative;
   padding: 20px;
   border-radius: 8px;
-  margin-right: 4rem !important;
+  margin-right: 5rem !important;
 }
 
 @media (max-width: 767px) {
@@ -154,7 +133,6 @@
 
 .cabecera h1 {
   font-size: clamp(1.2rem, 1.5vw, 1.8rem); /* Ajusta el tamaño según la pantalla */
-  color: var(--text-muted-color) !important;
   line-height: 1.4;
   margin-top: 15px;
 }
@@ -188,16 +166,6 @@
 .offset-md-7-5 {
   margin-left: 62.5%;
 }
-.custom-hr-cabecera {
-  width: 50%;
-  margin-bottom: 1.5rem;
-  height: 5px;
-  color: var(--light-grey);   /* old IE */
-  background-color: var(--light-grey);   /* Modern Browsers */
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-}
 
 /* Bottom Border (último 25%) */
 .box-cabecera::after {
@@ -222,7 +190,7 @@
 
 /* ABOUT ME */
 
-/* .custom-card {
+.custom-card {
   border: hidden !important;
 }
 
@@ -231,7 +199,7 @@
   text-decoration-color: var(--primary-color);
   text-decoration-thickness: 0.2rem;
   text-decoration-skip-ink: none;
-} */
+}
 
 /*Botón de AboutMe*/
 .accordion-button {
@@ -364,7 +332,6 @@
   background-color: var(--light-grey);   /* Modern Browsers */
   left: 0;
   right: 0;
-  margin-top: 1rem;
 }
 
 /* SERVICIOS */
@@ -477,7 +444,6 @@
 
 #services .carousel-container {
   position: relative; /* Necesario para contener el fondo */
-  background-image: url('./images/bg-services-section.webp');
   background-size: cover; /* Ajusta el tamaño del patrón */
   background-repeat: no-repeat; /* Evita que se repita */
   background-position: center; /* Centra el fondo */
@@ -493,15 +459,81 @@
   color: var(--primary-color);
 }
 
+
+/* ============= */
+/* FLIP CARDS CUSTOM CSS */
+/* ============= */
+
+:where(.ReactFlipCard__container) {
+  width: auto !important;
+  height: auto !important;
+}
+
+/* ============= */
+
 /* MEDIA */
 
-.media-section {
-  padding: 50px 0;
-}
 
 .media-pic-box img {
   border-radius: 10px;
   height: max-content;
+}
+
+/* Estilo de la carta */
+.media-card {
+  position: relative;
+  width: 25rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.media-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Superposición para el botón */
+.media-card-overlay {
+  position: absolute;
+  top: 0; /* Parte superior de la carta */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3); /* Oscurece ligeramente el fondo */
+  opacity: 0; /* Oculta inicialmente */
+  transition: opacity 0.3s ease;
+}
+
+.media-card:hover .media-card-overlay {
+  opacity: 1; /* Muestra el overlay en hover */
+}
+
+/* Botón superpuesto */
+#media .media-card-btn {
+  border: 2px solid var(--primary-color);
+  border-radius: 25px;
+  color: var(--primary-color);
+  background-color: transparent;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.media-card-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* Mostrar el botón siempre en pantallas pequeñas */
+@media (max-width: 768px) {
+  .media-card-overlay {
+    opacity: 1; /* Siempre visible */
+  }
 }
 
 .yellow-box {
@@ -772,9 +804,4 @@
       0 0 5px #BABABA, 
       0 0 10px #FFFF29;
   }
-}
-
-/* TEMPLATE (GRID CARDS) SOLUCIONES LEGALES */
-.templateGrid {
-  gap: 150px;
 }
